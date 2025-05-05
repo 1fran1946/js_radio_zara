@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+<!-- from 03 radio zary -->
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href=
+"data:image/gif;base64,R0lGODlhEAAQAOYAAP///wAAAEINN2UVVAFgnS9igVWLrAR+OQQfD0kOPYYESAB0uDFVbHKa1gCQIUgMPIQCRgB1tzBSZ3Oc2ACOG08SQoIMTgB0uiVSbnSf3QCMG2A+WpNRdEGbwkVcbpiq2gCKHHBnbKCLkLjFx3RpaNe5ywCNIZKSkXh4dubn5mNgXreYqgCULODe30lIRujn6IuJim9QYQCiPD8/PsnIyIGAf359fPb19QYAAACrRRAPD9zb23VzctnX139+f6yqqQS1UTU1NczLyoB/f7Cvr3Rzcc7NzQcICAW1UUtKSs3MzK2sq4SDgri3t4WEhN3c3BoaGRoYF0pHRoiHhsbFxJeVlYaFhb69u3p5eamoqKempiMhH0dFRGFfXpiXlpaVlouKiqWkpMjHxzw9OyIgHklFRWtpaLu6ueHg35WTkyAgIB4cGjs5OD07OhcWFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFewAAACwAAAAAEAAQAAAHooAAgoOEAAFRW2RrhYwBUlxlbIyFAVNdZm2TgwEBVF5nbpqCAUlVX2gBopxKVmBpqZOcQUtXYWqwlAE6QkxYYpzAwQEzO0NNWWOcAgkPFRshJy00PEROWsADChAWHCIoLjU9RU/BBAsRFx0jKS82PkZQwQUMEhgeJCowNz9HwgYNEzJ8KLEiBg5hnA44oKABhAkWMnIAQUKR4gEEGDNq3IggEAA7">
+<title>part03</title>     
+<title>Аудио Заря</title>
+<style>
+/*     
+^(.*\s{5})$ кончающиеся. уничтожить     
+Меню->Правка->Операции со строками->Удалить пустые строки     
+бойся строк из табов!     
+кроссбраузер https://autoprefixer.github.io/ru/      
+*/     
+body {
+	margin:0; padding:0;
+	font-family: sans-serif;
+	font-size: 30px;
+	text-align: center;
+	background-color: blue;     
+	color: #0A0BA3;
+	}
+label {display:block}	
+h1 {
+	margin:0 5px;
+	font-size: 1.5em;
+	border: solid 3px blue;
+	border-radius: 9px;
+	line-height: 3.68em;
+	margin-block-start:0;
+	margin-block-end:0;
+	}
+main {	
+	margin: auto; width: 90%; max-width: 1080px;
+	display:grid;
+	grid-template-columns: 3fr 6px 1fr;
+	grid-template-rows: 1fr;
+	}
+#tak {margin: 10px; padding-left:11px; resize: none;}
+button {font-size: 33px;}
+#post{
+	width: 100%;
+	background: #def;
+	}
+#cow{
+	margin:auto;
+	width:fit-content;
+	text-align: left;
+	padding:20px 0 20px 14px;     
+	background: transparent;
+	}
+#duk {
+	grid-area:1/1/2/2;
+	background: #def;
+	background: pink;/*delete!*/     
+	width: 100%;
+	padding-top: 5px;
+	padding-bottom: 12px;
+	}
+[type='radio']{position: relative;}
+[type='radio']:before {
+	content: '';
+	position: absolute;
+	top: -2px; left: -2px; border-radius: 50%;
+	width: 12px; height: 12px;
+	aspect-ratio: 1;/**/     
+	border: 2px solid navy;
+	background: white;
+	}
+[type='radio']:checked:after{
+	content: '';
+	position: absolute;
+	top: 2px; left: 2px; border-radius: 50%;
+	width: 8px; height: 8px;
+	aspect-ratio: 1;/**/      
+	background: navy;
+	}
+audio {margin:auto; display:block; border:3px solid gold;border-radius:55px;}
+footer{background:white;}     
+aside, section{background:#ffffc0}     
+/************/     
+@media screen and (max-width: 800px) {
+main {
+	width: 100%;
+	display: flex; flex-direction: column;
+	font-size: 20px;
+	overflow: hidden;
+	}
+#duk {
+	padding: 1px 0 12px;
+	/*имитац полоски разделителя*/     
+	margin-bottom:4px;
+	}
+#tak {margin:1px;width:94%;}
+button {font-size:23px;}
+#line{display:none;}
+}
+</style>
+</head>
+<body>
+<main>
+<div id="duk">
+	<div id="js25">
+		<h1>Аудио&nbsp;заря</h1>
+	</div>
+	<textarea id="tak" cols=50 rows=10>Луч и</textarea>     
+<!--     	
+	<textarea id="tak" cols=50 rows=10>
+Белые ночи — сплошное «быть может»…
+Светится что-то и странно тревожит —
+может быть, солнце, а может, луна.
+Может быть, с грустью, а может, с весельем,
+может, Архангельском, может, Марселем
+бродят новехонькие штурмана.
+	</textarea>
+-->     
+	<textarea id="hoo" cols=50 rows=10 style="display: none"></textarea>
+
+	<article>
+	<button id="btni">play</button>
+	<button onclick="
+	if(audio[a[psp][cur1]]){
+	//хули пауза, надо ведь стоп     
+	audio[a[psp][cur1]].pause();}
+	pouz=true;
+	cur1=0;cur2=0;g();btni.innerHTML='play';
+	">stop</button>
+	<button onclick="tak.value='';">clear</button>
+	</article>
+</div>
+
+<div id="line" style="background:transparent"></div>
+
+<div id="post">
+	<div id="cow">
+<label><input type="radio" name="b01" id="b05" checked> ЦХ ЧЛ+</label>
+<label><input type="radio" name="b01" id="b03"> НХ ХЛБЛИЗЬ</label>
+<label><input type="radio" name="b01" id="b04"> РХ ГЛИЯ</label>
+<hr>
+<label><input type="radio" name="b00" id="b00" checked> просто </label>
+<label><input type="radio" name="b00" id="b01"> упл.</label>
+<label><input type="radio" name="b00" id="b02"> разупл.</label>
+<hr>
+<label><input type="radio" name="b02" id="b06" checked> общ. </label>
+<label><input type="radio" name="b02" id="b07"> совм. </label>
+<label><input type="radio" name="b02" id="b08"> личн. </label>
+	</div>
+</div>
+</main>
+
+<footer>01212</footer>     
+<section>01212</section>     
+<aside>01212</aside>     
+
+<div  class="adv" style="display: none;">
+	<div style="background-color: #fed">
+		<audio controls><source src="h/h01.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h02.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h03.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h04.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h2/h05.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h06.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h07.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h08.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h09.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h10.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h11.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h12.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h13.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h14.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h15.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h16.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h17.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h18.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h19.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h20.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h21.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h22.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h23.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h24.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h25.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h26.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h27.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h28.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h29.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h2/h30.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h31.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h32.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h/h33.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="math/plus.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="math/minus.mp3" type="audio/mpeg"></audio>
+
+		<audio controls><source src="numb/n01.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n02.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n03.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n04.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n05.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n06.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n07.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n08.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n09.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n10.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n11.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n12.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n13.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n14.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n15.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n16.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n17.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n18.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n19.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n20.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n21.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="h2/joy22.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n23.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n24.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n25.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n26.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n27.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n28.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n29.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n30.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n31.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n32.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/n33.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/near.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/far.mp3" type="audio/mpeg"></audio>
+
+		<audio controls><source src="hard/r01.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r02.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r03.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r04.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r05.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r06.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r07.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r08.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r09.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r10.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r11.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r12.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r13.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r14.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r15.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r16.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r17.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r18.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r19.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r20.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r21.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r22.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r23.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r24.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r25.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r26.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r27.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r28.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r29.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r30.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r31.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r32.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/r33.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/gloo.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/blok.mp3" type="audio/mpeg"></audio>
+		именные
+
+		плюс,близь,глия
+		<audio controls><source src="math/plus.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="numb/near.mp3" type="audio/mpeg"></audio>
+		<audio controls><source src="hard/gloo.mp3" type="audio/mpeg"></audio>
+	</div>
+</div>
+<script>
+//alert(post.offsetWidth);     
+//duk.style.height=post.offsetWidth+'px';     
+//@ символ разделитель слов
+let nob=0; // смещения на номера
+let pouz=true;
+let foot=document.querySelector('footer');     
+let page=document.querySelector('section');      
+let aside=document.querySelector('aside');     
+let adi=document.querySelectorAll('audio');
+hoo.style.display='inline-block';     
+//let audio=Array.apply(null, adi);///не проще спред сделать??     
+let audio=[...adi];
+console.log(audio.length);     
+audio[105].style.borderRadius='0px';     
+audio[105].style.border='4px solid pink';      
+let mega;
+//=tak.value.replace(/[^а-яёЁ]/gi,'').toLowerCase();     
+//hoo.value=mega;     
+let alf='абвгдеёжзийклмнопрстуфхцчшщъыьэюя+-';
+let cod='оаетисвлнрдукыпябзмьчжгйхёшюцщфэъ+-';
+let lik='лиоеатнясдрвкыумхзпьжчфюйбгэёцщшъ+-';
+/*let a=[     
+	mega.split('').map(c=>alf.indexOf(c)),     
+	mega.split('').map(c=>alf.indexOf(cod[alf.indexOf(c)])),      
+	mega.split('').map(c=>alf.indexOf(lik[alf.indexOf(c)])),     
+	];*/     
+let cur2=0,cur1=0;
+let psp=+!b06.checked;//алфавит общий/совместный
+
+function inccur(){
+	cur1++;
+	//if(/[^+-]/.test(mega[cur1])) cur2++;     
+	cur2++;
+	if ((a[psp][cur1]==33)||(a[psp][cur1]==34)||//плюс минус
+		(a[psp][cur1]==68)||(a[psp][cur1]==69)||//близ даль
+		(a[psp][cur1]==103)||(a[psp][cur1]==104)||//глия блок
+		(a[psp][cur1]==105)||//плюс
+		(a[psp][cur1]==106)||//близ
+		(a[psp][cur1]==107)||//глия
+		(false)
+		)
+		cur2--;
+	}
+
+let lst;
+//ko=0,   , my=true;     
+
+
+function g(){
+	// подсвети букву номер cur
+function q(x){
+	i++;
+	return (i==cur2+1)?'<mark>'+x+'</mark>':x;
+	}
+
+	let i=0;
+	js25.innerHTML='';
+	lst.forEach(c=>
+		{
+		//console.log(x);     
+		js25.innerHTML += c.replace(/[а-яёЁ]/gi, q);
+		js25.innerHTML += '<br>';
+		});
+	let b=a[psp].map((c,j)=>j==cur1?'<mark>'+c+'</mark>':c);     
+	foot.innerHTML=b.join(',');     
+	page.innerHTML='cur1='+cur1;     
+	aside.innerHTML='cur2='+cur2;     
+	}
+
+
+
+audio.forEach(c=>{
+		//let index = audio.indexOf(c);     
+		c.addEventListener('ended', ()=> {
+			c.currentTime=0;
+			inccur();//увеличил курсор
+			//if (cur1!==a[psp].length) g();//подсветить     
+			if (cur1==a[psp].length) pouz=true; else g();
+			btni.innerHTML=(cur1==a[psp].length)?'play':'pause';//?"▌▌":"►";
+			//cur1==a[psp].length?null:audio[nob+a[psp][cur1]].play()     
+			cur1==a[psp].length?null:audio[a[psp][cur1]].play()
+		})
+	});
+//************************************************     
+btni.addEventListener('click',()=>{
+	if (!pouz) {
+		pouz=true;
+		btni.innerHTML='play';
+		if (a[psp].length)
+			//audio[nob+a[psp][cur1]].pause();     
+			audio[a[psp][cur1]].pause();
+		}// ато многоголосица
+	else{
+		lst=tak.value.split('\n');
+		mega=tak.value.replace(/[^а-яёЁ]/gi,'').toLowerCase();
+		let va2='';//с плюсами
+		let wrd=tak.value.split(/[^а-яёЁ]+/i).filter(c=>c);//слова
+		let sym=wrd.join('@').toLowerCase();
+		//let sym=wrd.join('').toLowerCase();
+		//va2 плюсы между буквами     
+		va2=wrd.map(c=>c.split('').join('+').toLowerCase()).join('');
+		//alert(sym);      
+		/*lst.forEach(x=>{vv=x.split(/[^а-яёЁ]+/i);     
+			vv.forEach(y=>{     
+				if (y!=''){va+=y.split('').join('+').toLowerCase()}     
+				});     
+			});     
+		if(va!==va2){alert('alert');console.log(va);console.log(va2)}*/     
+		let v='';
+		if(b00.checked)v=sym;
+		if(b01.checked)v=va2;
+		if(b02.checked)v=mega.split('').join('-')+'-';
+		//if (b02.checked&&b03.checked)v+='-';     
+		//no=(b03.checked)?35:0;     
+		if (b05.checked) nob=0;
+		if (b03.checked) nob=35;
+		if (b04.checked) nob=70;
+		//psp=(b06.checked)?0:1;     
+		if (b06.checked) psp=0;
+		if (b07.checked) psp=1;
+		if (b08.checked) psp=2;
+		if(hoo.value!=v) {cur1=0;cur2=0;}// подредакчен ритм курсор обнулить
+		hoo.value=v;
+		//alert(v);     
+		//разрулил @ по хладовитам     
+		const hid=x=>{
+			if(b03.checked)return 106;// для НХ близь
+			if(b04.checked)return 107;// для РХ глиз
+			if(b05.checked)return 105;// для ЦХ +
+			return 0
+			}
+		a=[
+			v.split('').map(c=>c=='@'?hid(c):
+				nob+alf.indexOf(c)),//просто
+			v.split('').map(c=>c=='@'?hid(c):
+				nob+alf.indexOf(cod[alf.indexOf(c)])),//упло
+			v.split('').map(c=>c=='@'?hid(c):
+				nob+alf.indexOf(lik[alf.indexOf(c)])),//разу
+			];
+		foot.innerHTML=a[psp].join(',');     
+		if(cur1>=a[psp].length) {cur1=0;cur2=0;}//
+		js25.innerHTML='';
+		lst.forEach(c=>{
+			if(c)js25.innerHTML+=c+'<br>'});//
+		g();//
+		
+		//if((a.length)&&(cur1<a.length))     
+		//audio[nob+a[psp][cur1]].play();     
+		if (audio[a[psp][cur1]]){
+			audio[a[psp][cur1]].play();
+			btni.innerHTML='pause';//(true)?"▌▌":"►";
+			pouz=false;// воспроизводится
+			}
+		}//else end
+   })
+//*************************
+</script>
+</body>
+</html>
